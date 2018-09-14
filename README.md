@@ -1,49 +1,15 @@
-# Javascript-Voronoi
+# TypeScript-Voronoi
 
-A Javascript implementation of Steven J. Fortune's algorithm to
-efficiently compute Voronoi diagrams. The Voronoi object's purpose is
-to solely compute a Voronoi diagram, it is completely standalone, with
+A TypeScript implementation of Steven J. Fortune's algorithm to
+efficiently compute Voronoi diagrams, forked from [Javascript-Voronoi](https://github.com/gorhill/Javascript-Voronoi).
+The Voronoi object's purpose is to solely compute a Voronoi diagram, it is completely standalone, with
 no dependency on external code: it contains no rendering code: that is
 left to the user of the library.
-
-## Core files
-
-* rhill-voronoi-core.js
-
-Where the Voronoi object is implemented. This is a standalone library, there
-is no dependency.
-
-* rhill-voronoi-core.min.js
-
-The minimized version (using YUI compressor)
-
-## Demo files
-
-* rhill-voronoi-demo1.html
-* rhill-voronoi-demo2.html
-* rhill-voronoi-demo3.php
-* rhill-voronoi-demo4.html
-* rhill-voronoi-demo5.html
-
-Demo pages to demonstrate usage of the Voronoi object.
-
-* excanvas/*
-
-Used by demo pages.
-
-ExplorerCanvas, giving pre-HTML5 Internet Explorer the ability to make sense
-of HTML5's canvas element. Pulled from http://code.google.com/p/explorercanvas/
-
-* mootools/*
-
-Used by rhill-voronoi-demo3.php
-
-* Above pages available at http://www.raymondhill.net/voronoi/
 
 
 ## Main object: Voronoi
 
-A Javascript object which allows to compute a Voronoi diagram.
+A TypeScript object which allows to compute a Voronoi diagram.
 The Voronoi object doesn't render the resulting Voronoi diagram,
 the user is responsible for rendering the diagram.
 
@@ -51,17 +17,19 @@ the user is responsible for rendering the diagram.
 
 Roughly:
 
-``` javascript
-var voronoi = new Voronoi();
-var bbox = {xl: 0, xr: 800, yt: 0, yb: 600}; // xl is x-left, xr is x-right, yt is y-top, and yb is y-bottom
-var sites = [ {x: 200, y: 200}, {x: 50, y: 250}, {x: 400, y: 100} /* , ... */ ];
+```typescript
+import { Voronoi, BoundingBox, Site, Diagram } from 'voronoijs';
+
+let voronoi = new Voronoi();
+let bbox: BoundingBox = {xl: 0, xr: 800, yt: 0, yb: 600}; // xl is x-left, xr is x-right, yt is y-top, and yb is y-bottom
+let sites: Site[] = [ {x: 200, y: 200}, {x: 50, y: 250}, {x: 400, y: 100} /* , ... */ ];
 
 // a 'vertex' is an object exhibiting 'x' and 'y' properties. The
 // Voronoi object will add a unique 'voronoiId' property to all
 // sites. The 'voronoiId' can be used as a key to lookup the associated cell
 // in diagram.cells.
 
-var diagram = voronoi.compute(sites, bbox);
+let diagram: Diagram = voronoi.compute(sites, bbox);
 ```
 
 The returned 'diagram' variable is a Javascript object with the
@@ -103,8 +71,8 @@ Added on October 12, 2013: In order to help improve performance,
 `Voronoi.recycle()` has been added to allow the recycling of a returned Voronoi
 diagram. Usage:
 
-``` javascript
-var diagram;
+```typescript
+let diagram;
 ...
 
 // some kind of loop starting here (whether outright or through a timer)
@@ -186,10 +154,10 @@ mind halfedges are always counterclockwise.
 
 ## License
 
-Copyright (c) 2010-2013 Raymond Hill 
-https://github.com/gorhill/Javascript-Voronoi
+Copyright (c) 2018 Chisato Hasegawa
+https://github.com/chase0213/TypeScript-Voronoi
 
-Licensed under The MIT License 
+Licensed under The MIT License
 http://en.wikipedia.org/wiki/MIT_License
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

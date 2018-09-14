@@ -1,5 +1,5 @@
-Copyright (C) 2010-2013 Raymond Hill
-https://github.com/gorhill/Javascript-Voronoi
+Copyright (C) 2018  Chisato Hasegawa
+https://github.com/chase0213/TypeScript-Voronoi
 
 Licensed under The MIT License
 http://en.wikipedia.org/wiki/MIT_License
