@@ -215,7 +215,7 @@ export class Voronoi {
   // "surrendered" to the Voronoi object for reuse.
   // TODO: rhill-voronoi-core v2: more performance to be gained
   // when I change the semantic of what is returned.
-  private recycle(diagram: Diagram) {
+  public recycle(diagram: Diagram) {
     if ( diagram ) {
       if ( diagram instanceof Diagram ) {
         this.toRecycle = diagram;
